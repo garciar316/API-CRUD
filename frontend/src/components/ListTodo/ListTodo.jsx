@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import {TodoContext} from '../../context/TodoContext';
+import {actions} from '../../components/Reducer/actions'
 
 const ListTodo = () => {
     const { HOST_API, dispatch, state: { todo } } = useContext(TodoContext);
@@ -9,7 +10,7 @@ const ListTodo = () => {
         fetch(HOST_API + "/todos")
             .then(response => response.json())
             .then((list) => {
-                dispatch({ type: "update-list", list })
+                dispatch({ type: actions.UPDATE_LIST, list })
             })
     }, [HOST_API, dispatch]);
 
@@ -18,7 +19,7 @@ const ListTodo = () => {
         fetch(HOST_API + "/" + id + "/todo", {
             method: "DELETE"
         }).then(() => {
-            dispatch({ type: "delete-item", id })
+            dispatch({ type: actions.DELETE, id })
         })
     };
 
@@ -42,7 +43,7 @@ const ListTodo = () => {
         })
             .then(response => response.json())
             .then((todo) => {
-                dispatch({ type: "update-item", item: todo });
+                dispatch({ type: actions.UPDATE, item: todo });
             });
     };
 

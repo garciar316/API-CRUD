@@ -1,5 +1,6 @@
 import React, {useContext, useRef, useState} from 'react';
 import {TodoContext} from '../../context/TodoContext';
+import {actions} from '../../components/Reducer/actions'
 
 const AddTodoForm = () => {
     const { HOST_API, dispatch, state: { todo } } = useContext(TodoContext);
@@ -27,7 +28,7 @@ const AddTodoForm = () => {
         })
             .then(response => response.json())
             .then((todo) => {
-                dispatch({ type: "add-item", item: todo });
+                dispatch({ type: actions.ADD, item: todo });
                 setState({ name: "" });
                 formRef.current.reset();
             });
@@ -53,7 +54,7 @@ const AddTodoForm = () => {
         })
             .then(response => response.json())
             .then((todo) => {
-                dispatch({ type: "update-item", item: todo });
+                dispatch({ type: actions.UPDATE, item: todo });
                 setState({ name: "" });
                 formRef.current.reset();
             });
