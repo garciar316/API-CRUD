@@ -10,7 +10,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @SpringBootApplication
 public class DemoApplication {
 
-    @Value("${trip.property.crossOrigin}")
+    @Value("${my-properties.property.crossOrigin}")
     private String crossOrigin;
 
 
