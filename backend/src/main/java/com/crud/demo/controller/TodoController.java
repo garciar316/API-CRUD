@@ -42,7 +42,7 @@ public class TodoController {
     @PutMapping(value = "api/todo")
     public ResponseEntity<Todo> update(@RequestBody Todo todo){
         try {
-            return ResponseEntity.ok(todoService.save(todo));
+            return ResponseEntity.ok(todoService.update(todo));
         } catch (NoSuchElementException e) {
             e.printStackTrace();
             return ResponseEntity.badRequest().build();

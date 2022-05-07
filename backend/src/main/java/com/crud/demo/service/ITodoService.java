@@ -8,6 +8,8 @@ public interface ITodoService {
 
     Todo save(Todo todo);
 
+    Todo update(Todo todo);
+
     void delete(Long id);
 
     Todo get(Long id);

@@ -17,14 +17,17 @@ public class TodoServiceImpl implements ITodoService {
         this.todoRepository = todoRepository;
     }
 
+    @Override
     public Iterable<Todo> list(){
         return todoRepository.findAll();
     }
 
+    @Override
     public Todo save(Todo todo){
         return todoRepository.save(todo);
     }
 
+    @Override
     public Todo update(Todo todo){
         if (todoRepository.existsById(todo.getId())) {
             return save(todo);
@@ -32,10 +35,12 @@ public class TodoServiceImpl implements ITodoService {
         throw new NoSuchElementException();
     }
 
+    @Override
     public void delete(Long id){
         todoRepository.delete(get(id));
     }
 
+    @Override
     public Todo get(Long id){
         return todoRepository.findById(id).orElseThrow();
     }
